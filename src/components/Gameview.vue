@@ -5,9 +5,10 @@
       <div
         v-for="(square,index) in table.squares"
         v-bind:key="square"
+        v-bind:class="{hilighted :square.isHilighted}"
         @click="clicked({index})"
         class="game-view-squares"
-      >{{square.value? square.value :"-"}}</div>
+      >{{square.value? square.value :'⠀'}}</div>
     </div>
   </div>
 </template>
@@ -44,7 +45,7 @@ export default {
 #Game-view {
   width: 70%;
   margin: 0 auto;
-  border: 1px solid #000;
+  border: 2px solid rgba(63, 63, 63, 0.767);
 }
 #Game-info {
   padding: 15px;
@@ -79,18 +80,18 @@ export default {
   -moz-user-select: none;
 }
 .game-view-squares.hilighted {
-  color: green;
+  background-color: rgba(0, 128, 0, 0.274);
 }
 .game-view-squares:hover {
   background-color: #eee;
 }
 .game-view-squares:nth-child(-n + 6) {
-  border-bottom: 5px solid brown;
+  border-bottom: 3px solid rgba(4, 8, 238, 0.281);
 }
 .game-view-squares:nth-child(3n + 1) {
-  border-right: 5px solid brown;
+  border-right: 3px solid rgba(4, 86, 238, 0.281);;
 }
 .game-view-squares:nth-child(3n + 2) {
-  border-right: 5px solid brown;
+  border-right: 3px solid rgba(4, 86, 238, 0.281);;
 }
 </style>
