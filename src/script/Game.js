@@ -44,6 +44,16 @@ class Game {
       this.inProgress = false;
     }
   }
+  resetBoard()
+  {
+    this.inProgress = true;
+    this.winner = null;
+    this.currentTurn = Game.O;
+    this.movesMade = 0;
+    this.squares = Array(9)
+      .fill(null)
+      .map(() => new Square());
+  }
 }
 Game.O = "O";
 Game.X = "X";

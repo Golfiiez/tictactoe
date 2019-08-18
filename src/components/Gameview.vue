@@ -16,7 +16,7 @@
 
 <script>
 import { Game } from "../script/Game";
-const table = new Game();
+let table = new Game();
 export default {
   name: "Game-view",
   data() {
@@ -27,15 +27,19 @@ export default {
       if (table.inProgress) {
         return `It is ${table.currentTurn} turn.`;
       } else if (table.winner) {
-        return `${table.winner} wins`;
+        return `${table.winner} wins press any button to reset`;
       } else {
-        return `Tie`;
+        return `Tie press any button to reset`;
       }
     }
   },
   methods: {
     clicked: i => {
-      table.makeMove(i.index);
+      if (table.inProgress) {
+        table.makeMove(i.index);
+      } else {
+       table.resetBoard();
+      }
     }
   }
 };
@@ -43,6 +47,7 @@ export default {
 
 <style scoped>
 #Game-view {
+  max-width: 600px;
   width: 70%;
   margin: 0 auto;
   border: 2px solid rgba(63, 63, 63, 0.767);
@@ -55,6 +60,7 @@ export default {
   text-align: center;
 }
 #Game-squares {
+  max-height: 700px;
   height: 80%;
   display: flex;
   flex-wrap: wrap;
@@ -70,9 +76,9 @@ export default {
   align-content: center;
   box-sizing: border-box;
 
-  font-family: cursive;
+  font-family: sans-serif;
   padding: 10%;
-  font-size: 200%;
+  font-size: 250%;
   text-transform: uppercase;
 
   cursor: pointer;
@@ -89,9 +95,9 @@ export default {
   border-bottom: 3px solid rgba(4, 8, 238, 0.281);
 }
 .game-view-squares:nth-child(3n + 1) {
-  border-right: 3px solid rgba(4, 86, 238, 0.281);;
+  border-right: 3px solid rgba(4, 86, 238, 0.281);
 }
 .game-view-squares:nth-child(3n + 2) {
-  border-right: 3px solid rgba(4, 86, 238, 0.281);;
+  border-right: 3px solid rgba(4, 86, 238, 0.281);
 }
 </style>
