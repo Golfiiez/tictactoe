@@ -1,5 +1,7 @@
 # tictactoe-vue
 
+Requires Node >= 20.
+
 ## Project setup
 ```
 npm install
@@ -7,7 +9,7 @@ npm install
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run dev
 ```
 
 ### Compiles and minifies for production
@@ -15,9 +17,9 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
+### Locally preview the production build
 ```
-npm run test
+npm run preview
 ```
 
 ### Lints and fixes files
@@ -26,4 +28,4 @@ npm run lint
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+This project uses Vite + Vue 3.
