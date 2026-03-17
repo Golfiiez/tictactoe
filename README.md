@@ -1,5 +1,7 @@
 # tictactoe-vue
 
+Requires Node >= 20.
+
 ## Project setup
 ```
 npm install
