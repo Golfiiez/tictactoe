@@ -4,7 +4,7 @@
     <div id="Game-squares">
       <div
         v-for="(square,index) in table.squares"
-        v-bind:key="square"
+        v-bind:key="index"
         v-bind:class="{hilighted :square.isHilighted}"
         @click="clicked({index})"
         class="game-view-squares"
@@ -16,14 +16,14 @@
 
 <script>
 import { Game } from "../script/Game";
-let table = new Game();
 export default {
   name: "Game-view",
   data() {
-    return { table: table };
+    return { table: new Game() };
   },
   computed: {
-    status: () => {
+    status() {
+      const table = this.table;
       if (table.inProgress) {
         return `It is ${table.currentTurn} turn.`;
       } else if (table.winner) {
@@ -34,11 +34,12 @@ export default {
     }
   },
   methods: {
-    clicked: i => {
+    clicked(i) {
+      const table = this.table;
       if (table.inProgress) {
         table.makeMove(i.index);
       } else {
-       table.resetBoard();
+        table.resetBoard();
       }
     }
   }
